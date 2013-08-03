@@ -76,14 +76,25 @@ exports.BattleFormats = {
 		ruleset: ['Pokemon', 'Standard', 'Same Type Clause', 'Evasion Abilities Clause', 'Team Preview'],
 		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew']
 	},
-	skybattleou: {
-		name: "Sky Battle OU",
-		section: "Singles",
+	skybattles: {
+		name: "Sky Battles",
+		section: "Other Metagames",
+
 		effectType: 'Format',
-		team: 'random',
-		canUseRandomTeam: true,
+		rated: true,
+		challengeShow: true,
 		searchShow: true,
-		ruleset: ['Random Battle']
+		isTeambuilderFormat: true,
+		validateSet: function(set) {
+			var template = this.getTemplate(set.species || set.name);
+			if (template.types.indexOf('Flying') === -1 && set.ability !== 'Levitate') {
+				return [set.species+" is not a Flying type and does not have the ability Levitate."];
+			}
+		},
+		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
+		banlist: ['Drizzle ++ Swift Swim', 'Soul Dew', 'Iron Ball', 'Gravity', 'Smack Down', 'Skill Swap', 'Entrainment', 'Gastro Acid', 'Simple Beam', 'Worry Seed',
+			'Lugia', 'Ho-Oh', 'Rayquaza', 'Giratina', 'Giratina-Origin', 'Shaymin-Sky', 'Arceus-Flying', 'Thundurus'
+		]
 	},
 	"1v1": {
 		effectType: 'Format',
@@ -387,7 +398,7 @@ exports.BattleFormats = {
 	lcdoubles: {
 		effectType: 'Format',
 		section: 'Doubles',
-		gameType: 'Doubles',
+		gameType: 'doubles',
 		name: "LC Doubles",
 		maxLevel: 5,
 		rated: true,
@@ -398,7 +409,7 @@ exports.BattleFormats = {
 		banlist: ['Sonicboom', 'Dragon Rage', 'Berry Juice', 'Carvanha', 'Meditite', 'Gligar', 'Scyther', 'Sneasel', 'Tangela', 'Vulpix', 'Yanma', 'Soul Dew']
 	},
 	doublesskybattle: {
-		name: "Doubles Sky Battle",
+		name: "Sky Battle (Doubles",
 		section: "Doubles",
 		gameType: 'doubles',
 		effectType: 'Format',
@@ -406,8 +417,15 @@ exports.BattleFormats = {
 		challengeShow: true,
 		searchShow: true,
 		isTeambuilderFormat: true,
-		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle Clause'],
-		banlist: ['Unreleased', 'Illegal', 'Sky Drop', 'Dark Void', 'Soul Dew',
+		validateSet: function(set) {
+			var template = this.getTemplate(set.species || set.name);
+			if (template.types.indexOf('Flying') === -1 && set.ability !== 'Levitate') {
+				return [set.species+" is not a Flying type and does not have the ability Levitate."];
+			}
+		},
+		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
+		banlist: ['Drizzle ++ Swift Swim', 'Soul Dew', 'Iron Ball', 'Gravity', 'Smack Down', 'Skill Swap', 'Entrainment', 'Gastro Acid', 'Simple Beam', 'Worry Seed',
+			'Sky Drop',  
 			'Mewtwo',
 			'Lugia',
 			'Ho-Oh',
@@ -420,7 +438,7 @@ exports.BattleFormats = {
 			'Arceus', 'Arceus-Bug', 'Arceus-Dark', 'Arceus-Dragon', 'Arceus-Electric', 'Arceus-Fighting', 'Arceus-Fire', 'Arceus-Flying', 'Arceus-Ghost', 'Arceus-Grass', 'Arceus-Ground', 'Arceus-Ice', 'Arceus', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Rock', 'Arceus-Steel', 'Arceus-Water',
 			'Reshiram',
 			'Zekrom',
-			'Kyurem-White'
+			'Kyurem-White'		
 			]
 	},
 	bhdoubles: {
@@ -531,6 +549,22 @@ exports.BattleFormats = {
 		isTeambuilderFormat: true,
 		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
 		banlist: ['Smeargle']
+	},
+	abilityexchange: {
+		name: "Ability Exchange",
+		section: "Other Metagames",
+
+		effectType: 'Format',
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+		ruleset: ['Pokemon', 'Ability Exchange Pokemon', 'Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'HP Percentage Mod', 'Team Preview'],
+		banlist: ['Unreleased', 'Illegal', 'Ignore Illegal Abilities', 'Drizzle ++ Swift Swim', 'Soul Dew', 'Drought ++ Chlorophyll', 'Sand Stream ++ Sand Rush',
+			'Mewtwo', 'Lugia', 'Ho-Oh', 'Blaziken', 'Kyogre', 'Groudon', 'Rayquaza', 'Deoxys', 'Deoxys-Attack', 'Deoxys-Defense', 'Deoxys-Speed', 'Dialga', 'Palkia', 'Giratina', 'Giratina-Origin', 'Manaphy', 'Darkrai', 'Shaymin-Sky',
+			'Arceus', 'Arceus-Bug', 'Arceus-Dark', 'Arceus-Dragon', 'Arceus-Electric', 'Arceus-Fighting', 'Arceus-Fire', 'Arceus-Flying', 'Arceus-Ghost', 'Arceus-Grass', 'Arceus-Ground', 'Arceus-Ice', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Rock', 'Arceus-Steel', 'Arceus-Water',
+			'Excadrill', 'Tornadus-Therian', 'Thundurus', 'Reshiram', 'Zekrom', 'Landorus', 'Kyurem-White', 'Genesect', 'Slaking', 'Regigigas'
+		]
 	},
 	statexchange: {
 		effectType: 'Format',
@@ -1749,6 +1783,29 @@ exports.BattleFormats = {
 			return problems;
 		}
 	},
+	abilityexchangepokemon: {
+		effectType: 'Banlist',
+		validateTeam: function(team, format) {
+			var selectedAbilities = [];
+			var defaultAbilities = [];
+			var bannedAbilities = {adaptability:1, arenatrap:1, contrary:1, hugepower:1, imposter:1, purepower:1, prankster:1, serenegrace:1, shadowtag:1, simple:1, speedboost:1, tintedlens:1, wonderguard:1};
+			var problems = [];
+			for (var i=0; i<team.length; i++) {
+				var template = this.getTemplate(team[i].species);
+				var ability = this.getAbility(team[i].ability);
+				var abilities = Object.extended(template.abilities).values();
+				if (ability.id in bannedAbilities && abilities.indexOf(ability.name) === -1) {
+					problems.push(ability.name+' is banned on Pokemon that do not legally have it.');
+				}
+				selectedAbilities.push(ability.name);
+				defaultAbilities.push(abilities);
+			}
+			if (problems.length) return problems;
+			if (!this.checkAbilities(selectedAbilities, defaultAbilities)) {
+				return ['That is not a valid Ability Exchange team.'];
+			}
+		}
+	},
 	legal: {
 		effectType: 'Banlist',
 		banlist: ['Crobat+BraveBird+Hypnosis']
@@ -1850,18 +1907,6 @@ exports.BattleFormats = {
 			}
 		}
 	},
-	skybattleclause: {
-                effectType: 'Rule',
-                onStart: function() {
-			this.add('rule', 'Sky Battle: Only Flying-type and Levitate pokemon are allowed.');
-		},
-                validateSet: function(set) {
-                        var template = this.getTemplate(set.ability || set.species);
-                        if (set.ability !== 'Levitate' && set.species !== 'Charizard' && set.species !== 'Pidgey' && set.species !== 'Pidgeotto' && set.species !== 'Pidgeot' && set.species !== 'Spearow' && set.species !== 'Fearow' && set.species !== 'Zubat' && set.species !== 'Golbat' && set.species !== 'Farfetch\'D' && set.species !== 'Doduo' && set.species !== 'Dodrio' && set.species !== 'Scyther' && set.species !== 'Gyarados' && set.species !== 'Aerodactyl' && set.species !== 'Articuno' && set.species !== 'Zapdos' && set.species !== 'Moltres' && set.species !== 'Dragonite' && set.species !== 'Hoothoot' && set.species !== 'Noctowl' && set.species !== 'Ledyba' && set.species !== 'Ledian' && set.species !== 'Crobat' && set.species !== 'Togetic' && set.species !== 'Natu' && set.species !== 'Xatu' && set.species !== 'Hoppip' && set.species !== 'Skiploom' && set.species !== 'Jumpluff' && set.species !== 'Yanma' && set.species !== 'Murkrow' && set.species !== 'Gligar' && set.species !== 'Delibird' && set.species !== 'Skarmory' && set.species !== 'Mantine' && set.species !== 'Lugia' && set.species !== 'Ho-oh' && set.species !== 'Beautifly' && set.species !== 'Taillow' && set.species !== 'Swellow' && set.species !== 'Wingull' && set.species !== 'Pelipper' && set.species !== 'Masquerain' && set.species !== 'Ninjask' && set.species !== 'Swablu' && set.species !== 'Altaria' && set.species !== 'Tropius' && set.species !== 'Salamence' && set.species !== 'Rayquaza' && set.species !== 'Starly' && set.species !== 'Staravia' && set.species !== 'Staraptor' && set.species !== 'Mothim' && set.species !== 'Combee' && set.species !== 'Vespiquen' && set.species !== 'Drifloon' && set.species !== 'Drifblim' && set.species !== 'Honchkrow' && set.species !== 'Chatot' && set.species !== 'Mantyke' && set.species !== 'Togekiss' && set.species !== 'Yanmega' && set.species !== 'Gliscor' && set.species !== 'Shaymin-Sky' && set.species !== 'Arceus-Flying' && set.species !== 'Pidove' && set.species !== 'Tranquill' && set.species !== 'Unfezant' && set.species !== 'Woobat' && set.species !== 'Swoobat' && set.species !== 'Sigilyph' && set.species !== 'Archen' && set.species !== 'Archeops' && set.species !== 'Ducklett' && set.species !== 'Swanna' && set.species !== 'Emolga' && set.species !== 'Rufflet' && set.species !== 'Braviary' && set.species !== 'Vullaby' && set.species !== 'Mandibuzz' && set.species !== 'Tornadus' && set.species !== 'Tornadus-Therian' && set.species !== 'Thundurus' && set.species !== 'Thundurus-Therian' && set.species !== 'Landorus' && set.species !== 'Landorus-Therian') {
-                                return [set.species+" is banned because it does not have Levitate or the Flying type."];
-                        }
-                }
-        },
         faintclause: {
         	effectType: 'Rule',
 		onFaint: function (pokemon) {
@@ -1872,7 +1917,7 @@ exports.BattleFormats = {
 			"You're gonna be the very worst / like no one ever was / to lose all the battles is your test / to faint them all is your cause",
 			'Twinkle twinkle little star / fuck you that was my best sweeper', "Once u had a friend / who u cared for very much / guess what he just died", 
 			"You're sharp as a rock / you're bright as a hole / you're one to mock / you could be beaten by a blind mole",
-			"Alas, poor trainer! I knew him, your Pok�mon, a fellow of infinite jest, of most excellent fancy. Then I killed him, and now all is just swell."];
+			"Alas, poor trainer! I knew him, your Pokemon, a fellow of infinite jest, of most excellent fancy. Then I killed him, and now all is just swell."];
 			haikus = haikus.randomize();
 			this.add('-message', haikus[0]);
 		}
