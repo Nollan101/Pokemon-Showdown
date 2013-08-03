@@ -247,7 +247,7 @@ var commands = exports.commands = {
 		tour[room.id].status = 1;
 		tour[room.id].players = new Array();		
 
-		room.addRaw('<hr /><h2><font color="green">' + sanitize(user.name) + ' has started a ' + Tools.base.Formats[tempTourTier].name + ' Tournament.</font> <font color="red">/j</font> <font color="green">to join!</font></h2><b><font color="blueviolet">PLAYERS:</font></b> ' + targets[1] + '<br /><font color="blue"><b>TIER:</b></font> ' + Data.base.Formats[tempTourTier].name + '<hr />');
+		room.addRaw('<hr /><h2><font color="green">' + sanitize(user.name) + ' has started a ' + Tools.data.Formats[tempTourTier].name + ' Tournament.</font> <font color="red">/j</font> <font color="green">to join!</font></h2><b><font color="blueviolet">PLAYERS:</font></b> ' + targets[1] + '<br /><font color="blue"><b>TIER:</b></font> ' + Data.base.Formats[tempTourTier].name + '<hr />');
 	},
 	
 	endtour: function(target, room, user, connection) {
