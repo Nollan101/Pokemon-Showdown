@@ -437,6 +437,32 @@ exports.BattleFormats = {
 		banlist: ['Wonder Guard', 'Pure Power', 'Huge Power', 'Shadow Tag', 'Arena Trap']
 
 	},
+	triples: {
+    		name: "Triples (Dev)",
+    		section: 'Triples',
+
+    		effectType: 'Format',
+    		gameType: 'triples',
+    		challengeShow: true,
+    		searchShow: true,
+    		rated: true,
+    		ruleset: ['Pokemon', 'Team Preview', 'Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Evasion Abilities Clause', 'HP Percentage Mod'],
+    		banlist: ['Unreleased', 'Illegal', 'Sky Drop', 'Dark Void', 'Soul Dew',
+      		'Mewtwo',
+      		'Lugia',
+      		'Ho-Oh',
+      		'Kyogre',
+      		'Groudon',
+      		'Rayquaza',
+      		'Dialga',
+      		'Palkia',
+      		'Giratina', 'Giratina-Origin',
+      		'Arceus', 'Arceus-Bug', 'Arceus-Dark', 'Arceus-Dragon', 'Arceus-Electric', 'Arceus-Fighting', 'Arceus-Fire', 'Arceus-Flying', 'Arceus-Ghost', 'Arceus-Grass', 'Arceus-Ground', 'Arceus-Ice', 'Arceus', 'Arceus-Poison', 'Arceus-Psychic', 'Arceus-Rock', 'Arceus-Steel', 'Arceus-Water',
+      		'Reshiram',
+     		'Zekrom',
+      		'Kyurem-White'
+    		]
+  	},
 	doubleschallengecup: {
 		name: "Doubles Challenge Cup",
 		section: 'Doubles',
@@ -1005,7 +1031,7 @@ exports.BattleFormats = {
 			var msg = '';
 			switch (name) {
 			case 'Ludicolo':
-				msg = "¡Ay, ay, ay! ¡Vámonos de fiesta, ya llegó Ludicolo!";
+				msg = "ï¿½Ay, ay, ay! ï¿½Vï¿½monos de fiesta, ya llegï¿½ Ludicolo!";
 				break;
 			case 'Missingno':
 				msg = "Hide yo items, hide yo data, missingno is here!";
@@ -1110,8 +1136,8 @@ exports.BattleFormats = {
 				var malePickUpLines = ['have you been to Fukushima recently? Because you are glowing tonight!', 
 				'did it hurt when you fell to the earth? Because you must be an angel!', 'can I buy you a drink?',
 				'roses are red / lemons are sour / spread your legs / and give me an hour', 
-				"roses are red / violets are red / I'm not good with colors", "Let's go watch cherry bossoms together (´???`)",
-				"Will you be my Denko? (´???`)"];
+				"roses are red / violets are red / I'm not good with colors", "Let's go watch cherry bossoms together (ï¿½???`)",
+				"Will you be my Denko? (ï¿½???`)"];
 				malePickUpLines = malePickUpLines.randomize();
 				var femalePickUpLines = ['Do you go to the gym? You are buff!', "Guy, you make me hotter than July.",
 				"While I stare at you I feel like I just peed myself", "Let's go to my apartment to have midnight coffee", 
@@ -1161,7 +1187,7 @@ exports.BattleFormats = {
 			"You're gonna be the very worst / like no one ever was / to lose all the battles is your test / to faint them all is your cause",
 			'Twinkle twinkle little star / fuck you that was my best sweeper', "I'm wheezy and I'm sleezy / but as a trainer you're measly", 
 			"You're sharp as a rock / you're bright as a hole / you're one to mock / you could be beaten by a maimed mole",
-			"Alas, poor trainer! I knew him, your Pokémon, a fellow of infinite jest, of most excellent fancy."];
+			"Alas, poor trainer! I knew him, your Pokï¿½mon, a fellow of infinite jest, of most excellent fancy."];
 			haikus = haikus.randomize();
 			this.add('-message', haikus[0]);
 		},
@@ -1261,7 +1287,7 @@ exports.BattleFormats = {
 				} else {
 					winner = 'p1';
 				}
-				this.add('-message', "No!! You let Delibird down. He trusted you. You lost the battle, " + name + ". But you lost something else: your Pokémon's trust.");
+				this.add('-message', "No!! You let Delibird down. He trusted you. You lost the battle, " + name + ". But you lost something else: your Pokï¿½mon's trust.");
 				pokemon.battle.win(winner);
 			}
 		}
@@ -1277,7 +1303,7 @@ exports.BattleFormats = {
 		searchShow: true,
 		ruleset: ['HP Percentage Mod', 'Sleep Clause Mod'],
 		onBegin: function() {
-			this.add('-message', "You and your faithful favourite Pokémon are travelling around the world, and you will fight this trainer in many places until either win or finish the travel!");
+			this.add('-message', "You and your faithful favourite Pokï¿½mon are travelling around the world, and you will fight this trainer in many places until either win or finish the travel!");
 			// ~learn international independence days with PS~
 			var date = Date();
 			date = date.split(' ');
@@ -1288,11 +1314,11 @@ exports.BattleFormats = {
 				break;
 			case 5:
 				// 5th independence day of Algeria and Venezuela
-				this.add('-message', "¡Libertad para Venezuela o muerte!");
+				this.add('-message', "ï¿½Libertad para Venezuela o muerte!");
 				break;
 			case 9:
 				// 9th independence day of Argentina and South Sudan
-				this.add('-message', "¡Che, viteh que somos libres!");
+				this.add('-message', "ï¿½Che, viteh que somos libres!");
 				break;
 			case 10:
 				// Bahamas lol
@@ -1300,11 +1326,11 @@ exports.BattleFormats = {
 				break;
 			case 20:
 				// Colombia
-				this.add('-message', "¡Independencia para Colombia!");
+				this.add('-message', "ï¿½Independencia para Colombia!");
 				break;
 			case 28:
-				// Perú
-				this.add('-message', "¡Perú libre!");
+				// Perï¿½
+				this.add('-message', "ï¿½Perï¿½ libre!");
 				break;
 			}
 		},
@@ -1846,7 +1872,7 @@ exports.BattleFormats = {
 			"You're gonna be the very worst / like no one ever was / to lose all the battles is your test / to faint them all is your cause",
 			'Twinkle twinkle little star / fuck you that was my best sweeper', "Once u had a friend / who u cared for very much / guess what he just died", 
 			"You're sharp as a rock / you're bright as a hole / you're one to mock / you could be beaten by a blind mole",
-			"Alas, poor trainer! I knew him, your Pokémon, a fellow of infinite jest, of most excellent fancy. Then I killed him, and now all is just swell."];
+			"Alas, poor trainer! I knew him, your Pokï¿½mon, a fellow of infinite jest, of most excellent fancy. Then I killed him, and now all is just swell."];
 			haikus = haikus.randomize();
 			this.add('-message', haikus[0]);
 		}
