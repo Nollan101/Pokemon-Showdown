@@ -603,6 +603,8 @@ var commands = exports.commands = {
 				}
 			}
 		}
+		rt.players.splice(rt.players.indexOf(t[0]), 1);
+		rt.players.push(t[1]);
 		rt.history.push(t[0] + "->" + t[1]);
 		room.addRaw('<b>' + t[0] +'</b> has left the tournament and is replaced by <b>' + t[1] + '</b>.');
 	},
