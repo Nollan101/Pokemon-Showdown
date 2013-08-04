@@ -5301,7 +5301,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "Causes one adjacent ally to have the power of its attack this turn boosted to 1.5x (this effect is stackable). Fails if there is no adjacent ally, but does not fail if the ally is using a two-turn move. This move ignores Protect and Detect. Ignores a target's Substitute. Priority +5.",
+		desc: "Causes one adjacent ally to have the power of its attack this turn boosted to 1.5x (this effect is stackable). Fails if there is no adjacent ally, but does not fail if the ally is using a two-turn move. This move ignores Protect and Detect. Ignores a target's Substitute. It can be used twice on an ally in Triples. Priority +5.",
 		shortDesc: "One adjacent ally's move power is 1.5x this turn.",
 		id: "helpinghand",
 		name: "Helping Hand",
@@ -5314,12 +5314,21 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			duration: 1,
+			this.effectData.layers = 0;
 			onStart: function(target, source) {
+				if (this.effectData.layers >= 2)return false;
+				this.effectData.layers++;
 				this.add('-singleturn', target, 'Helping Hand', '[of] '+source);
 			},
 			onBasePower: function(basePower) {
-				this.debug('Boosting from Helping Hand');
-				return basePower * 1.5;
+				if (this.effectData.layers = 1) {
+					this.debug('Boosting from Helping Hand (x1)');
+					return basePower * 1.5;
+				}
+				if (this.effectData.layers = 2) {
+					this.debug('Boosting from Helping Hand (x2)');
+					return basePower * 2.25;
+				}
 			}
 		},
 		secondary: false,
