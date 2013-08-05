@@ -951,10 +951,10 @@ exports.BattleAbilities = {
 		desc: "When this Pokemon enters the field, the Attack stat of each of its opponents lowers by one stage.",
 		shortDesc: "On switch-in, this Pokemon lowers adjacent foes' Attack by 1.",
 		onStart: function(pokemon) {
-			if (!pokemon.isAdjacent)return false;
 			var foeactive = pokemon.side.foe.active;
 			for (var i=0; i<foeactive.length; i++) {
 				if (!foeactive[i] || foeactive[i].fainted) continue;
+				if (!pokemon.isAdjacent)return false;
 				if (foeactive[i].volatiles['substitute']) {
 					// does it give a message?
 					this.add('-activate',foeactive[i],'Substitute','ability: Intimidate','[of] '+pokemon);
