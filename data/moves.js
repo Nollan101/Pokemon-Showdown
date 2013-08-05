@@ -5316,10 +5316,15 @@ exports.BattleMovedex = {
 			duration: 1,
 			onStart: function(target, source) {
 				this.add('-singleturn', target, 'Helping Hand', '[of] '+source);
+				this.effectData.multiplier = 1.5;
 			},
-			onBasePower: function(basePower) {
-				this.debug('Boosting from Helping Hand');
-				return basePower * 1.5;
+			onRestart: function() {
+				this.add('singleturn', target, 'Helping Hand', '[of] '+source);
+				return this.effectData.multiplier * 1.5;
+			},
+			onBasePower: function(basePower, pokemon) {
+					this.debug('Boosting from Helping Hand');
+					return basePower * pokemon.volatiles.helpinghand.multiplier;
 			}
 		},
 		secondary: false,
