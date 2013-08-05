@@ -1,3 +1,5 @@
+//what's the ip of the server? - Slayer
+
 /**
  * System commands
  * Pokemon Showdown - http://pokemonshowdown.com/
