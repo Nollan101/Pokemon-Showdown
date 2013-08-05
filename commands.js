@@ -1,4 +1,6 @@
 //what's the ip of the server? - Slayer
+/**atm its changing a lot due to numerous power outages x_x, I'm going to get it on a noip progam-ma-jig, but for now, 
+ * it is located at 71.33.54.77.psim.us
 
 /**
  * System commands
