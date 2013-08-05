@@ -5314,21 +5314,20 @@ exports.BattleMovedex = {
 		},
 		effect: {
 			duration: 1,
-			this.effectData.layers = 0;
 			onStart: function(target, source) {
-				if (this.effectData.layers >= 2)return false;
-				this.effectData.layers++;
 				this.add('-singleturn', target, 'Helping Hand', '[of] '+source);
+				this.effectData.multiplier = 1.5;
 			},
-			onBasePower: function(basePower) {
-				if (this.effectData.layers = 1) {
-					this.debug('Boosting from Helping Hand (x1)');
-					return basePower * 1.5;
+			onRestart: function() {
+				//This should never happen, but whatevs
+				if (this.effectData.multiplier >= 2.25)return false;
+				if (this.effectData.multiplier = 1.5) {
+					return this.effectData.multiplier = 2.25;
 				}
-				if (this.effectData.layers = 2) {
-					this.debug('Boosting from Helping Hand (x2)');
-					return basePower * 2.25;
-				}
+			},
+			onBasePower: function(basePower, pokemon) {
+					this.debug('Boosting from Helping Hand');
+					return basePower * pokemon.volatiles.helpinghand.multiplier;
 			}
 		},
 		secondary: false,
