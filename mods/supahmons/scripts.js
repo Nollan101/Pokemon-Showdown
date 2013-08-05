@@ -1,3 +1,2 @@
 exports.BattleScripts = {
-  init: function() {
-};
+};  
