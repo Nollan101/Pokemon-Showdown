@@ -5321,7 +5321,6 @@ exports.BattleMovedex = {
 			onRestart: function() {
 				this.add('-singleturn', target, 'Helping Hand', '[of] '+source);
 				return this.effectData.multiplier * 1.5;
-				}
 			},
 			onBasePower: function(basePower, pokemon) {
 					this.debug('Boosting from Helping Hand');
