@@ -5319,10 +5319,8 @@ exports.BattleMovedex = {
 				this.effectData.multiplier = 1.5;
 			},
 			onRestart: function() {
-				//This should never happen, but whatevs
-				if (this.effectData.multiplier >= 2.25)return false;
-				if (this.effectData.multiplier = 1.5) {
-					return this.effectData.multiplier = 2.25;
+				this.add('-singleturn', target, 'Helping Hand', '[of] '+source);
+				return this.effectData.multiplier * 1.5;
 				}
 			},
 			onBasePower: function(basePower, pokemon) {
