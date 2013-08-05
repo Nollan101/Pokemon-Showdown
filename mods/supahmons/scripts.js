@@ -1,1 +1,3 @@
-start shit :]
+exports.BattleScripts = {
+  init: function() {
+};
