@@ -1,9 +1,9 @@
 exports.BattleScripts = {
     init: function() {
         for (var i in this.data.Pokedex) {
-            if (this.data.Pokedex.types[0] === 'Water') {
+            if (this.data.Pokedex[i].types[0] === 'Water') {
                 this.modData('Pokedex', i).types[0] = 'Grass';
-            } else if (this.data.Pokedex.types[1] === 'Water') {
+            } else if (this.data.Pokedex[i].types[1] === 'Water') {
                 this.modData('Pokedex', i).types[1] = 'Grass';
             }
         }
